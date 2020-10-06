@@ -37,24 +37,24 @@ function cart_get_number_of_items()
   return cnt;
 }
 
-function abc()
+function cart_get_orders()
 {
-  let text = '';
+  let orders = '';
   for (let i = 0; i < window.localStorage.length; i++) {
     let key = window.localStorage.key(i);
     let value = window.localStorage.getItem(key);
 
     if (key.indexOf('product_') == 0) {
-      text += key + ': ' + value * 1 + ', ';
+      orders += key + ': ' + value * 1 + ', ';
     }
   }
 
-  return text;
+  return orders;
 }
 
 function update_orders_input()
 {
-  let text = abc();
+  let text = cart_get_orders();
   $('#orders_input').val(text);
 }
 
