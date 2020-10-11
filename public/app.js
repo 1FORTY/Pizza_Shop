@@ -45,7 +45,7 @@ function cart_get_orders()
     let value = window.localStorage.getItem(key);
 
     if (key.indexOf('product_') == 0) {
-      orders += key + ': ' + value * 1 + ', ';
+      orders += key + '=' + value * 1 + ',';
     }
   }
 
