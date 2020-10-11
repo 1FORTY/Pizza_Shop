@@ -21,5 +21,24 @@ get '/about' do
 end
 
 post '/cart' do
-  erb "Hello"
+  items_input = params[:orders]
+  @item = parse_orders_line items_input
+
+  erb "Hello, #{@item}"
+end
+
+def parse_orders_line orders_line
+  s1 = orders_line.split(',')
+
+  order = []
+  s = []
+  s1.each do |x|
+    id = x.split('=')[0].split('_')[1]
+    cnt = x.split('=')[1]
+
+    s = [id, cnt]
+    order += [s]
+  end
+
+  return order
 end
