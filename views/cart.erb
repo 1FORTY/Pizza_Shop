@@ -34,7 +34,7 @@
 
 <form action="/place_order" method="post" role="form">
 
-  <input name="order[order_input]" type="hidden">
+  <input name="order[order_input]" type="hidden" value="<%= @items_input %>">
 
   <div class="form-group">
     <label for="name">Name:</label>
