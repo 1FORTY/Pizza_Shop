@@ -24,7 +24,7 @@ post '/cart' do
   items_input = params[:orders]
   @item = parse_orders_line items_input
 
-  erb "Hello, #{@item}"
+  erb :cart
 end
 
 def parse_orders_line orders_line
