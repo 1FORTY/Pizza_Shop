@@ -10,6 +10,10 @@ class Product < ActiveRecord::Base
 
 end
 
+class Order < ActiveRecord::Base
+
+end
+
 get '/' do
   @products = Product.all
 
@@ -45,4 +49,9 @@ def parse_orders_line orders_line
   end
 
   return order
+end
+
+post '/place_order' do 
+
+  erb "Hello"
 end
