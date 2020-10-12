@@ -1,0 +1,47 @@
+<h2>Ваш заказ принят</h2>
+
+<div class="row">
+  <% @products.each do |p| %>
+    <div class="col-md-3">
+
+      <div>
+        <%= p.title %>
+      </div>
+
+      <div>
+        <img src="<%= p.path_to_image %>" alt="pizza" style="width: 150px;">
+      </div>
+
+      <div>
+        <%= p.description %>
+      </div>
+
+      <div>
+        <%= p.size %> cm
+      </div>
+
+      <div>
+        <%= p.price %> Rub
+      </div>
+
+      <div>
+        <button class="btn btn-success btn-sm" onclick="add_to_cart(<%= p.id %>)">Add to cart</button>
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+    <div>
+      <% total_price = 0 %>
+      <h2>Total price:
+        <% @items.each do |item| %>
+          <% item[0].price %>
+          <% total_price += item[1].to_i * item[0].price %>
+    <% end %>
+
+        <%= total_price %>
+      </h2> 
+    </div>
+  </div>

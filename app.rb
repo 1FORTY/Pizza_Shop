@@ -14,8 +14,11 @@ class Order < ActiveRecord::Base
 
 end
 
-get '/' do
+before do
   @products = Product.all
+end
+
+get '/' do
 
   erb :index
 end
@@ -52,6 +55,15 @@ def parse_orders_line orders_line
 end
 
 post '/place_order' do 
+    place_order = Order.new params[:order] do |o|
+    o.save
 
-  erb "Hello"
+    @items = parse_orders_line o.order_input
+    @items.each do |item|
+      item[0] = Product.find(item[0])
+    end
+    
+  end
+
+  erb :place_order
 end
